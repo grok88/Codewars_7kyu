@@ -116,3 +116,63 @@ function getMiddle(s){
 console.log(getMiddle("middle"));
 
 //----------------------------------------------------
+
+//1
+// In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+// Example:
+
+// highAndLow("1 2 3 4 5");  // return "5 1"
+// highAndLow("1 2 -3 4 5"); // return "5 -3"
+// highAndLow("1 9 3 4 -5"); // return "9 -5"
+
+function highAndLow(numbers){
+	const max = Math.max(...numbers.split(' '));
+	const min = Math.min(...numbers.split(' '));
+	return `${max} ${min}`
+}
+
+console.log(highAndLow("1 2 3 4 5"));
+
+// //2
+// Welcome. In this kata, you are asked to square every digit of a number.
+// For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+// Note: The function accepts an integer and returns an integer
+
+function squareDigits(num){
+	//may the code be with you
+	return parseInt([...String(num)].map((item) => item * item).join(''));
+}
+console.log(squareDigits(9119));
+
+//3
+// Simple, given a string of words, return the length of the shortest word(s).
+// String will never be empty and you do not need to account for different data types.
+
+function findShort(s){
+	return Math.min(...s.split(' ').map((item) => {
+		return item.length;
+	}));
+}
+
+console.log(findShort("bitcoin take over the world maybe who knows perhaps"));
+
+//4
+// Trolls are attacking your comment section!
+// A common way to deal with this situation is to remove all of the vowels from the trolls' comments, neutralizing the threat.
+// Your task is to write a function that takes a string and return a new string with all vowels removed.
+// For example, the string "This website is for losers LOL!" would become "Ths wbst s fr lsrs LL!".
+// Note: for this kata y isn't considered a vowel.
+
+//Делал тупой как я
+function disemvowel(str) {
+	return [...str].filter((item)=> {
+		return !'euioa'.includes(item.toLowerCase())
+	}).join('');
+}
+
+// Код увОжаемого, белого человека 
+function disemvowel(str) {
+	return str.replace(/[aeiou]/gi, '');
+}
+
+console.log(disemvowel("This website is for losers LOL!"));
