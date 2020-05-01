@@ -176,3 +176,105 @@ function disemvowel(str) {
 }
 
 console.log(disemvowel("This website is for losers LOL!"));
+
+
+//-----------------------------------
+
+//1
+// A square of squares
+// You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+// However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+// Task
+// Given an integral number, determine if it's a square number:
+// In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+// The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+// My solution
+// var isSquare = function(n){
+// 	if (n < 0) return false;
+// 	if(n == 0) return true;
+// 	return  n %  Math.sqrt(n) === 0 ?  true : false;
+// }
+
+var isSquare = function(n){
+	return Math.sqrt(n) % 1 === 0;
+}
+
+console.log(isSquare(2));
+
+
+
+//2
+// Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+// Examples input/output:
+// XO("ooxx") => true
+// XO("xooxx") => false
+// XO("ooxXm") => true
+// XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+// XO("zzoo") => false
+
+// My
+function XO(str) {
+	str = str.toLowerCase();
+	if(!str.includes('x') & !str.includes('o') ) return true;
+
+	let tempO = [...str].filter((item) => item === 'o').length;
+	let tempX = [...str].filter((item) => item === 'x').length;
+
+	return tempO === tempX ? true : false;
+}
+
+//2
+function XO(str) {
+	let x = str.match(/x/gi);
+	let o = str.match(/o/gi);
+	return (x && x.length) === (o && o.length);
+}
+
+//3
+function XO(str) {
+    var a = str.replace(/x/gi, ''),
+        b = str.replace(/o/gi, '');
+    return a.length === b.length;
+}
+console.log(XO('ghoooo xxxx'));
+
+
+//3
+// Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
+// If you want to know more http://en.wikipedia.org/wiki/DNA
+// In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+
+//My
+// function DNAStrand(dna){
+// 	return [...dna].map((item) => {
+// 		switch (item){
+// 			case 'A' : 
+// 				return 'T';
+// 			case 'T' : 
+// 				return 'A';
+// 			case 'C' : 
+// 				return 'G';
+// 			case 'G' : 
+// 				return 'C';
+// 		}
+// 		return item;
+// 	}).join('');
+// }
+
+//2
+function DNAStrand(dna){
+	const obj = {
+		'A' : 'T',
+		'T' : 'A',
+		'C' : 'G',
+		'G' : 'C',
+	}
+
+	return  dna.replace(/./g, (elem) => {
+		// console.log(obj[elem]);
+		return obj[elem];
+	});
+}
+
+console.log(DNAStrand("ATTGC"));
