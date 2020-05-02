@@ -278,3 +278,78 @@ function DNAStrand(dna){
 }
 
 console.log(DNAStrand("ATTGC"));
+
+//----------------------------------------------
+
+//1
+// An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case.
+// isIsogram("Dermatoglyphics") == true
+// isIsogram("aba") == false
+// isIsogram("moOse") == false // -- ignore letter case
+
+
+function isIsogram(str){
+	// console.log(!/(\w).*\1/i.test(str));
+	const temp = [...str.toLowerCase()];
+	return temp.every((item,i)=> temp.indexOf(item) == i);
+}
+
+console.log(isIsogram("abjhl"));
+
+//2
+// Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013). Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter, he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word, check out how contractions are expected to be in the example below.
+// Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+// Example:
+// Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+// Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+
+
+String.prototype.toJadenCase = function () {
+	// my
+	return this.split(' ').map((item) => {
+		return item.charAt(0).toUpperCase() + item.substr(1);
+	}).join(' ');
+
+	// best solition
+	// return this.replace(/(^|\s)[a-z]/g, function(x){ return x.toUpperCase(); });
+};
+
+var str = "How can mirrors be real if our eyes aren't real";
+console.log(str.toJadenCase());
+
+//3
+// Given two integers a and b, which can be positive or negative, find the sum of all the numbers between including them too and return it. If the two numbers are equal return a or b.
+// Note: a and b are not ordered!
+// Examples
+// GetSum(1, 0) == 1   // 1 + 0 = 1
+// GetSum(1, 2) == 3   // 1 + 2 = 3
+// GetSum(0, 1) == 1   // 0 + 1 = 1
+// GetSum(1, 1) == 1   // 1 Since both are same
+// GetSum(-1, 0) == -1 // -1 + 0 = -1
+
+//my
+function getSum( a,b ){
+	const arr = [];
+
+	if(a === b ) return a;
+
+	if (a < b){
+		while(a <= b){
+			arr.push(a);
+			a++;
+		}
+	} else {
+		while(a >= b){
+			arr.push(a);
+			a--;
+		}
+	}
+
+	return arr.reduce((current, item) => {
+		return current + item;
+	});
+}
+
+//GetSum = (a, b) => (a + b) * (Math.abs(a - b) + 1) / 2;
+
+console.log(getSum(1,2));
