@@ -353,3 +353,89 @@ function getSum( a,b ){
 //GetSum = (a, b) => (a + b) * (Math.abs(a - b) + 1) / 2;
 
 console.log(getSum(1,2));
+
+//-------------------------------------------
+
+// //1
+// In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?
+
+// At the end of the first year there will be: 
+// 1000 + 1000 * 0.02 + 50 => 1070 inhabitants
+
+// At the end of the 2nd year there will be: 
+// 1070 + 1070 * 0.02 + 50 => 1141 inhabitants (number of inhabitants is an integer)
+
+// At the end of the 3rd year there will be:
+// 1141 + 1141 * 0.02 + 50 => 1213
+
+// It will need 3 entire years.
+// More generally given parameters:
+
+// p0, percent, aug (inhabitants coming or leaving each year), p (population to surpass)
+
+// the function nb_year should return n number of entire years needed to get a population greater or equal to p.
+
+// aug is an integer, percent a positive or null number, p0 and p are positive integers (> 0)
+
+// Examples:
+// nb_year(1500, 5, 100, 5000) -> 15
+// nb_year(1500000, 2.5, 10000, 2000000) -> 10
+
+function nbYear(p0, percent, aug, p) {
+	const percentNew = percent / 100;
+	let population = p0;
+	let years = 0;
+
+	while (population < p){
+		population = population + population * percentNew + aug;
+		years++;
+	}
+
+	return years;
+}
+
+console.log(nbYear(1500, 5, 100, 5000));
+
+//2
+
+// Take 2 strings s1 and s2 including only letters from ato z. Return a new sorted string, the longest possible, containing distinct letters,
+// each taken only once - coming from s1 or s2.
+// Examples:
+// a = "xyaabbbccccdefww"
+// b = "xxxxyyyyabklmopq"
+// longest(a, b) -> "abcdefklmopqwxy"
+
+// a = "abcdefghijklmnopqrstuvwxyz"
+// longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+
+
+// my solution
+// function longest(s1, s2) {
+// 	const test = [...s1, ...s2];
+
+// 	return test.filter((item, i) => {
+// 		return test.indexOf(item) == i;
+// 	}).sort().join('');
+// }
+
+// The best
+function longest(s1, s2) {
+	return [...new Set(s1 + s2)].sort().join('');
+}
+
+console.log(longest("aretheyhere", "yestheyarehere"));
+
+
+//3
+// In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+// Example
+// filter_list([1,2,'a','b']) == [1,2]
+// filter_list([1,'a','b',0,15]) == [1,0,15]
+// filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+
+function filter_list(l) {
+	// Return a new array with the strings filtered out
+	return l.filter(item => typeof item === 'number');
+}
+
+console.log(filter_list([1,2,'a','b']));
