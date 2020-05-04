@@ -439,3 +439,95 @@ function filter_list(l) {
 }
 
 console.log(filter_list([1,2,'a','b']));
+
+
+//-------------------------------------
+
+//1
+// Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers. No floats or non-positive integers will be passed.
+// For example, when an array is passed like [19, 5, 42, 2, 77], the output should be 7.
+// [10, 343445353, 3453445, 3453545353453] should return 3453455.
+
+// Какой же я тупой - как же стыдно
+// function sumTwoSmallestNumbers(numbers) { 
+// 	return [...numbers.splice(numbers.indexOf(Math.min(...numbers)),1), ...numbers.splice(numbers.indexOf(Math.min(...numbers)),1) ].reduce((count,nextitem) => count + nextitem);
+// }
+
+function sumTwoSmallestNumbers(numbers) { 
+	const [a,b] = numbers.sort((a,b) => a - b);
+	return a + b;
+}
+// Рершение православного человека
+console.log(sumTwoSmallestNumbers([5, 8, 12, 19, 22]));
+
+
+//2
+// Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+// Your task is to write a function maskify, which changes all but the last four characters into '#'.
+
+// Examples
+// maskify("4556364607935616") == "############5616"
+// maskify(     "64607935616") ==      "#######5616"
+// maskify(               "1") ==                "1"
+// maskify(                "") ==                 ""
+
+// // "What was the name of your first pet?"
+// maskify("Skippy")                                   == "##ippy"
+// maskify("Nananananananananananananananana Batman!") == "####################################man!"
+
+
+// return masked string
+
+
+//My
+function maskify(cc) {
+	if (cc.length <= 4) return cc;
+	const arr = cc.split('');
+	const temp = arr.splice(-4);
+	return arr.join('').replace(/./g, '#') + temp.join('');
+}
+
+
+function maskify(cc) {
+	return cc.replace(/.(?=.{4})/g, '#');
+}
+
+console.log(maskify('212331111'));
+
+
+//3
+// Given the triangle of consecutive odd numbers:
+
+//              1
+//           3     5
+//        7     9    11
+//    13    15    17    19
+// 21    23    25    27    29
+// ...
+// Calculate the row sums of this triangle from the row index (starting at index 1) e.g.:
+
+// rowSumOddNumbers(1); // 1
+// rowSumOddNumbers(2); // 3 + 5 = 8
+
+function rowSumOddNumbers(n) {
+	let count = 10000;
+	let arr = [];
+	const arrSum = [];
+
+	// забили массив простыми числамия
+	for(let i = 1; i <=count; i++){
+		if(i % 2 !== 0) arr.push(i);
+	}
+
+	for (let i = 0; i <= arr.length; i++){
+		// console.log(arr.splice(0, i+1));
+		// console.log(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
+		arrSum.push(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
+	}
+	console.log(arrSum);
+
+	return arrSum[n-1];
+	// TODO
+}
+
+console.log(rowSumOddNumbers(5));
