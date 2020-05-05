@@ -509,25 +509,83 @@ console.log(maskify('212331111'));
 // rowSumOddNumbers(1); // 1
 // rowSumOddNumbers(2); // 3 + 5 = 8
 
+// function rowSumOddNumbers(n) {
+// 	let count = 10000;
+// 	let arr = [];
+// 	const arrSum = [];
+
+// 	// забили массив простыми числамия
+// 	for(let i = 1; i <=count; i++){
+// 		if(i % 2 !== 0) arr.push(i);
+// 	}
+
+// 	for (let i = 0; i <= arr.length; i++){
+// 		// console.log(arr.splice(0, i+1));
+// 		// console.log(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
+// 		arrSum.push(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
+// 	}
+// 	console.log(arrSum);
+
+// 	return arrSum[n-1];
+// 	// TODO
+// }
+
+// function rowSumOddNumbers(n) {
+// 	let count = 10000;
+// 	let arr = [];
+// 	const arrSum = [];
+
+// 	// забили массив простыми числамия
+// 	for(let i = 1; i <=count; i++){
+// 		if(i % 2 !== 0) arr.push(i);
+// 	}
+
+// 	for (let i = 0; i <= arr.length; i++){
+// 		// console.log(arr.splice(0, i+1));
+// 		// console.log(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
+// 		arrSum.push(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
+// 	}
+// 	console.log(arrSum);
+
+// 	return arrSum[n-1];
+// 	// TODO
+// }
+
+
+//                 1
+//           3     5
+//        7     9    11
+//    13    15    17    19
+// 21    23    25    27    29
+
+// function rowSumOddNumbers(n) {
+// 	let test = 0; 
+// 	let count = 0;
+
+// 	for(let i = 1; i <=n; i++){
+// 		let initial = 1;
+// 		let count = (i -1) * 2;
+
+// 		if (i == 1) {
+// 			test = initial;
+// 		} else {
+// 			test = test + count;
+// 		};
+// 	}
+// 	let sum = [];
+
+// 	for (let i = 0; i < n; i++){
+// 		sum.push(test + count);
+// 		count += 2;
+// 	}
+
+// 	return sum.reduce((a,b)=> a + b);
+	
+// }
+
+
 function rowSumOddNumbers(n) {
-	let count = 10000;
-	let arr = [];
-	const arrSum = [];
-
-	// забили массив простыми числамия
-	for(let i = 1; i <=count; i++){
-		if(i % 2 !== 0) arr.push(i);
-	}
-
-	for (let i = 0; i <= arr.length; i++){
-		// console.log(arr.splice(0, i+1));
-		// console.log(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
-		arrSum.push(arr.splice(0, i+1).reduce((initial,next)=> initial + next));
-	}
-	console.log(arrSum);
-
-	return arrSum[n-1];
-	// TODO
+	return Math.pow(n,3);	
 }
 
 console.log(rowSumOddNumbers(5));
