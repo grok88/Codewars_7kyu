@@ -45,3 +45,48 @@ function findNextSquare(sq) {
 }
 
 console.log(findNextSquare(121));
+
+
+
+//----------------------------DAY 2
+
+//1
+// ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+// If the function is passed a valid PIN string, return true, else return false.
+// eg:
+// validatePIN("1234") === true
+// validatePIN("12345") === false
+// validatePIN("a234") === false
+
+function validatePIN (pin) {
+	//return true or false
+	const reg = /^(\d{4}|\d{6})$/g;
+	return reg.test(pin);
+}
+
+console.log(validatePIN("1222221"));
+
+
+//2
+
+// The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+// To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+// Input
+// Input will consist of a list of lists containing two items each. Each list contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+// Note for F#: The input will be of (int list list) which is a List<List>
+// Example Input
+// [[18, 20],[45, 2],[61, 12],[37, 6],[21, 21],[78, 9]]
+// Output
+// Output will consist of a list of string values (in Haskell: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+// Example Output
+// ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+
+
+function openOrSenior(data){
+	return data.map((item)=>{
+		return (item[0] < 55 || item[1]) <= 7 ?  "Open" : "Senior";
+	})
+}
+
+console.log(openOrSenior([[90, 7], [54, 9], [60, 12], [21, 21], [90, 8], [1, 1], [55, 10], [0, 0], [75, 11], [90, 9]]));
+
