@@ -90,3 +90,64 @@ function openOrSenior(data){
 
 console.log(openOrSenior([[90, 7], [54, 9], [60, 12], [21, 21], [90, 8], [1, 1], [55, 10], [0, 0], [75, 11], [90, 9]]));
 
+
+// ---------------DAY 3
+
+
+// TASK 1
+// Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+// Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
+// Examples:
+// Testing: [0, 0, 0, 1] ==> 1
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 0, 1] ==> 5
+// Testing: [1, 0, 0, 1] ==> 9
+// Testing: [0, 0, 1, 0] ==> 2
+// Testing: [0, 1, 1, 0] ==> 6
+// Testing: [1, 1, 1, 1] ==> 15
+// Testing: [1, 0, 1, 1] ==> 11
+// However, the arrays can have varying lengths, not just limited to 4.
+
+
+const binaryArrayToNumber = arr => {
+	return parseInt(arr.join(''),2);
+};
+
+binaryArrayToNumber([0,0,0,1]);
+
+//TASK 2
+// Implement a method that accepts 3 integer values a, b, c. The method should return true if a triangle can be built with the sides of given length and false in any other case.
+// (In this case, all triangles must have surface greater than 0 to be accepted).
+
+	function isTriangle(a,b,c){
+		if (a === 0 || b === 0 || c === 0) return false;
+		return a < b + c && b < a + c  && c < a + b
+	}
+
+console.log(isTriangle(7,2,2));
+
+// TASK 3 
+// Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+// The binary number returned should be a string
+
+function addBinary(a,b) {
+	return (a + b).toString(2);
+}
+
+console.log(addBinary(1,2));
+
+
+// TASK 4
+
+// Make a program that filters a list of strings and returns a list with only your friends name in it.
+// If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+// Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+// friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+
+function friend(friends){
+	return friends.filter((friend)=>{
+		if (friend.length === 4 && /^[a-zA-Z]{4}$/g.test(friend)) return friend;
+	});
+}
+
+console.log(friend(["Ryag", "Jimmy", "123", "4", "Cool Man"]));
