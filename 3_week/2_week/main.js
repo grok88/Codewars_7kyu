@@ -60,3 +60,37 @@ function removeSmallest(numbers) {
 	return newArr;
 }	
 console.log(removeSmallest([1, 2, 3, 4, 5,1]));
+
+
+//------DAY 3-------------------
+
+//TASK 1
+
+//Find the odd int
+//Given an array, find the integer that appears an odd number of times.
+// There will always be only one integer that appears an odd number of times.
+
+function findOdd(arr) {
+	return  arr.filter( num => {
+		return arr.filter(item => item === num).length %2 === 1
+	})[0];
+	
+}
+
+
+console.log( findOdd([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5]));
+
+//TASK 2
+//Reverse words
+
+
+// Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+// Examples
+// "This is an example!" ==> "sihT si na !elpmaxe"
+// "double  spaces"      ==> "elbuod  secaps"
+
+function reverseWords(str) {
+	return str.split(' ').map(item => item.split('').reverse().join('')).join(' ');
+}
+
+console.log(reverseWords('The quick brown fox jumps over the lazy dog.'));
