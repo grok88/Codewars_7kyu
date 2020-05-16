@@ -161,3 +161,82 @@ function oddOrEven(array) {
 }
 
 console.log(oddOrEven([0, 1, 5]));
+
+
+
+
+//----------------------------------------
+
+//TASK1
+
+
+// Don't give me five!
+// In this kata you get the start number and the end number of a region and should return the count of all numbers except numbers with a 5 in it. The start and the end number are both inclusive!
+// Examples:
+// 1,9 -> 1,2,3,4,6,7,8,9 -> Result 8
+// 4,17 -> 4,6,7,8,9,10,11,12,13,14,16,17 -> Result 12
+// The result may contain fives. ;-)
+// The start number will always be smaller than the end number. Both numbers can be also negative!
+// I'm very curious for your solutions and the way you solve it. Maybe someone of you will find an easy pure mathematics solution.
+// Have fun coding it and please don't forget to vote and rank this kata! :-)
+// I have also created other katas. Take a look if you enjoyed this kata!
+
+function dontGiveMeFive(start, end){
+	let arr =[];
+	for (let i=start; i <=end; i ++){
+		if (String(i).includes('5')) continue;
+		arr.push(i);
+	}
+	return arr.length;
+}
+
+console.log(dontGiveMeFive(4,17));
+
+// TASk 2
+
+// Create a function that returns the name of the winner in a fight between two fighters.
+// Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
+// Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
+// Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
+
+// Example:
+// function Fighter(name, health, damagePerAttack) {
+//         this.name = name;
+//         this.health = health;
+//         this.damagePerAttack = damagePerAttack;
+//         this.toString = function() { return this.name; }
+// }
+
+// Как делать ненадо!!!
+function declareWinner(fighter1, fighter2, firstAttacker) {
+	let fight = true;
+	let fight1 = {...fighter1};
+	let fight2 =  {...fighter2};
+
+	if (fight1.name === firstAttacker){
+		while(fight){
+			fight2.health -= fight1.damagePerAttack;
+			if (fight2.health <=0){
+				fight=false;
+				return fight1.name;
+			}  else{
+			let temp ={...fight1};
+			fight1 = {...fight2};
+			fight2 = {...temp};
+      		}
+	} 
+}	else {
+		while(fight){
+			fight1.health -= fight2.damagePerAttack;
+			console.log(fight1.health);
+			if (fight1.health <=0){
+				fight=false;
+				return fight2.name;
+			} else{
+      		let temp ={...fight1};
+			fight1 = {...fight2};
+			fight2 = {...temp};
+      		}
+		}
+	}
+};
