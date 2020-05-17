@@ -240,3 +240,62 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
 		}
 	}
 };
+
+
+//------------------------------------------------
+// The last day
+
+// Find the stray number
+// You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+// Complete the method which accepts such an array, and returns that single different number.
+// The input array will always be valid! (odd-length >= 3)
+// Examples
+// [1, 1, 2] ==> 2
+// [17, 17, 3, 17, 17, 17, 17] ==> 3
+
+function stray(numbers) {
+	// console.log(numbers);
+	numbers.forEach((num,i) => {
+		if(!(numbers.indexOf(num) === i)){
+			temp = num;
+		}
+	});
+	return numbers.filter(elem => elem !== temp)[0]
+}
+
+//The best
+// const stray = nums => nums.reduce((a, b) => a ^ b);
+
+
+console.log(stray([17, 17, 3, 17, 17, 17, 17]));
+
+
+//TASk2
+// Your task is to split the chocolate bar of given dimension n x m into small squares. Each square is of size 1x1 and unbreakable. Implement a function that will return minimum number of breaks needed.
+// For example if you are given a chocolate bar of size 2 x 1 you can split it to single squares in just one break, but for size 3 x 1 you must do two breaks.
+// If input data is invalid you should return 0 (as in no breaks are needed if we do not have any chocolate to split). Input will always be a non-negative integer.
+
+function breakChocolate(n,m) {
+	return n*m -1;
+}
+console.log(breakChocolate(5, 5));
+
+//3
+// String ends with?
+
+// Complete the solution so that it returns true if the first argument(string) passed in ends with the 2nd argument (also a string).
+// Examples:
+// solution('abc', 'bc') // returns true
+// solution('abc', 'd') // returns false
+
+function solution(str, ending){
+	const reg = new RegExp(ending + "$",'g');
+	return str.match(reg) ? true : false;
+}
+
+//The best
+// function solution(str, ending){
+// 	return str.endsWith(ending);
+//   }
+
+console.log(solution('abcde', 'cde'));
