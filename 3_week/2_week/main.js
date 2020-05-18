@@ -243,7 +243,7 @@ function declareWinner(fighter1, fighter2, firstAttacker) {
 
 
 //------------------------------------------------
-// The last day
+// 6 day
 
 // Find the stray number
 // You are given an odd-length array of integers, in which all of them are the same, except for one single number.
@@ -299,3 +299,64 @@ function solution(str, ending){
 //   }
 
 console.log(solution('abcde', 'cde'));
+
+
+//The last day
+// The highest profit wins!
+// Story
+// Ben has a very simple idea to make some profit: he buys something and sells it again. Of course, this wouldn't give him any profit at all if he was simply to buy and sell it at the same price. Instead, he's going to buy it for the lowest possible price and sell it at the highest.
+// Task
+// Write a function that returns both the minimum and maximum number of the given list/array.
+// Examples
+// minMax([1,2,3,4,5])   == [1,5]
+// minMax([2334454,5])   == [5, 2334454]
+// minMax([1])           == [1, 1]
+// Remarks
+// All arrays or lists will always have at least one element, so you don't need to check the length. Also, your function will always get an array or a list, you don't have to check for null, undefined or similar.
+
+function minMax(arr){
+	let min = Math.min(...arr);
+	let max = Math.max(...arr);
+	
+	return arr.length ===1 ? [arr[0],arr[0]] : [min, max]; // fix me!
+}
+console.log(minMax([1,2,3,4,5]));
+
+//TAsk 2
+// Sum of a sequence
+
+// Your task is to make function, which returns the sum of a sequence of integers.
+// The sequence is defined by 3 non-negative values: begin, end, step.
+// If begin value is greater than the end, function should returns 0
+// Examples
+// sequenceSum(2,2,2) === 2
+// sequenceSum(2,6,2) === 12 // 2 + 4 + 6
+// sequenceSum(1,5,1) === 15 // 1 + 2 + 3 + 4 + 5
+// sequenceSum(1,5,3) === 5 // 1 + 4
+
+const sequenceSum = (begin, end, step) => {
+	let sum = 0;
+	for (let i = begin; i <=end; i+=step){
+		sum+=i;
+	}
+	return begin > end ? 0 : sum
+};
+
+console.log(sequenceSum(2, 6, 2));
+
+//TASK3
+// Testing 1-2-3
+
+// Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
+// Write a function which takes a list of strings and returns each line prepended by the correct number.
+// The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+// Examples:
+// number([]) // => []
+// number(["a", "b", "c"]) // => ["1: a", "2: b", "3: c"]
+
+var number=function(array){
+	return array.map((item,i) => {
+		return `${i+1}:${item}`;
+	});
+}
+console.log(number(["a", "b", "c"]));
