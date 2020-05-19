@@ -1,0 +1,50 @@
+//----------------------day1
+
+// task1
+// Largest 5 digit number in a series
+
+// In the following 6 digit number:
+// 283910
+// 91 is the greatest sequence of 2 consecutive digits.
+// In the following 10 digit number:
+// 1234567890
+// 67890 is the greatest sequence of 5 consecutive digits.
+// Complete the solution so that it returns the greatest sequence of five consecutive digits found within the number given. The number will be passed in as a string of only digits. It should return a five digit integer. The number passed may be as large as 1000 digits.
+
+function solution(digits){
+	let temp = digits.split('');
+	const max = Math.max(...temp);
+
+	let temp5 = []
+	temp.map((num, i) => {
+		if(Number(num) === max) {
+			temp5.push(temp.splice(i,5).join(''))
+			return num;	
+		}
+	});
+	return Math.max(...temp5.map(elem => Number(elem)));
+}
+
+console.log(solution('7316717653133062491922511967442657474235534919493496983520368542506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753123457977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257540920752963450'));
+
+
+//TASK2
+//Sum of all the multiples of 3 or 5
+
+// Your task is to write function findSum.
+// Upto and including n, this function will return the sum of all multiples of 3 and 5.
+// For example:
+// findSum(5) should return 8 (3 + 5)
+// findSum(10) should return 33 (3 + 5 + 6 + 9 + 10)
+
+function findSum(n) {
+	let arr =[];
+	for(let i=1; i <=n; i++){
+		if(i%3 === 0 || i%5 ===0){
+			arr.push(i)
+		}
+	}
+	return arr.reduce((acc, elem) => acc+elem)
+}
+
+console.log(findSum(5));
