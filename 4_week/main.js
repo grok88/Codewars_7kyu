@@ -48,3 +48,66 @@ function findSum(n) {
 }
 
 console.log(findSum(5));
+
+//-------- DAY 2 ----------------
+
+//Maximum Length Difference
+// You are given two arrays a1 and a2 of strings. Each string is composed with letters from a to z. Let x be any string in the first array and y be any string in the second array.
+// Find max(abs(length(x) − length(y)))
+// If a1 and/or a2 are empty return -1 in each language except in Haskell (F#) where you will return Nothing (None).
+// #Example:
+// a1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"]
+// a2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"]
+// mxdiflg(a1, a2) --> 13
+
+function mxdiflg(a1, a2) {
+	if(a1.length === 0 || a2.length === 0){
+		return -1;
+	}
+	
+	let min1 = Math.min(...a1.map(elem => elem.length));
+	let max1 = Math.max(...a1.map(elem => elem.length));
+	
+	
+	let min2 = Math.min(...a2.map(elem => elem.length));
+	let max2 = Math.max(...a2.map(elem => elem.length));
+
+	let t1 = Math.abs(max1 - min2);
+	let t2 = Math.abs(max2 - min1);
+	return Math.max(t1,t2)
+}
+
+var s1 = ["hoqq", "bbllkw", "oox", "ejjuyyy", "plmiis", "xxxzgpsssa", "xxwwkktt", "znnnnfqknaz", "qqquuhii", "dvvvwz"];
+var s2 = ["cccooommaaqqoxii", "gggqaffhhh", "tttoowwwmmww"];
+
+console.log(mxdiflg(s1, s2));
+
+//TASK2
+// Make a function that does arithmetic!
+
+// Given two numbers and an arithmetic operator (the name of it, as a string), return the result of the two numbers having that operator used on them.
+// a and b will both be positive integers, and a will always be the first number in the operation, and b always the second.
+// The four operators are "add", "subtract", "divide", "multiply".
+// A few examples:
+
+// arithmetic(5, 2, "add")      => returns 7
+// arithmetic(5, 2, "subtract") => returns 3
+// arithmetic(5, 2, "multiply") => returns 10
+// arithmetic(5, 2, "divide")   => returns 2.5
+
+
+function arithmetic(a, b, operator){
+	switch(operator){
+		case "add" :
+			return a + b;
+		case "subtract" : 
+			return a - b;
+		case "multiply" : 
+			return a * b;
+		case "divide" : 
+			return a / b;
+	}
+	//your code here!
+}
+
+console.log(arithmetic(1, 2, "add"));
