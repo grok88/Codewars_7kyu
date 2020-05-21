@@ -111,3 +111,44 @@ function arithmetic(a, b, operator){
 }
 
 console.log(arithmetic(1, 2, "add"));
+
+// ----day 3
+// Sort array by string length
+
+// Write a function that takes an array of strings as an argument and returns a sorted array containing the same strings, ordered from shortest to longest.
+// For example, if this array were passed as an argum
+// Your function would return the following array:
+// ["Eyes", "Glasses", "Monocles", "Telescopes"]
+// All of the strings in the array passed to your function will be different lengths, so you will not have to decide how to order multiple strings of the same length.
+
+function sortByLength (array) {
+	return array.sort((a,b) => a.length - b.length);
+};
+
+console.log(sortByLength(["Beg", "Life", "I", "To"]));
+
+//TASk 2
+// The Coupon Code
+// Your online store likes to give out coupons for special occasions. Some customers try to cheat the system by entering invalid codes or using expired coupons.
+// Task
+// Your mission:
+// Write a function called checkCoupon which verifies that a coupon code is valid and not expired.
+// A coupon is no more valid on the day AFTER the exp
+// Examples:
+// checkCoupon("123", "123", "July 9, 2015", "July 9, 2015")  ===  true
+// checkCoupon("123", "123", "July 9, 2015", "July 2, 2015")  ===  false
+
+function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
+
+
+	// if (enteredCode !== correctCode) return false;
+	// let currentDateMs = new Date(currentDate).getTime();
+	// let expirationDateMs = new Date(expirationDate).getTime();
+	//   let oneDayMS = 24*60*60*1000;
+	// if (currentDateMs === expirationDateMs) return true;
+	//   if((currentDateMs + oneDayMS) >= expirationDateMs) return false;
+	//   return true;
+
+	return ((enteredCode === correctCode) && Date.parse(expirationDate) >= Date.parse(currentDate)) ? true: false
+  }
+console.log(checkCoupon('123a','123','September 5, 2014','October 1, 2014'));
