@@ -152,3 +152,47 @@ function checkCoupon(enteredCode, correctCode, currentDate, expirationDate){
 	return ((enteredCode === correctCode) && Date.parse(expirationDate) >= Date.parse(currentDate)) ? true: false
   }
 console.log(checkCoupon('123a','123','September 5, 2014','October 1, 2014'));
+
+
+
+// -----Day 4---------------
+
+//Task1
+// Find the middle element
+
+// As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+// The input to the function will be an array of three distinct numbers (Haskell: a tuple).
+// For example:
+// gimme([2, 3, 1]) => 0
+// 2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
+// Another example (just to make sure it is clear):
+// gimme([5, 10, 14]) => 1
+// 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
+
+var gimme = function (inputArray) {
+		let middle = [...inputArray].sort((a,b) => a - b)[1];
+	return inputArray.indexOf(middle);
+};
+
+console.log(gimme([2, 3, 1]));
+
+
+//Task 2
+
+// Remove duplicate words
+// Your task is to remove all duplicate words from a string, leaving only single (first) words entries.
+// Example:
+// Input:
+// 'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+// Output:
+// 'alpha beta gamma delta'
+
+function removeDuplicateWords (s) {
+	let arr = s.split(' ');
+	
+	return arr.filter((el, i) => {
+		return  arr.indexOf(el) === i
+	}).join(' ');
+}
+
+console.log(removeDuplicateWords('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'));
