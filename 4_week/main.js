@@ -196,3 +196,81 @@ function removeDuplicateWords (s) {
 }
 
 console.log(removeDuplicateWords('alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'));
+
+
+// DAY 5
+// Moves in squared strings (I)
+
+// This kata is the first of a sequence of four about "Squared Strings".
+// You are given a string of n lines, each substring being n characters long: For example:
+// s = "abcd\nefgh\nijkl\nmnop"
+// We will study some transformations of this square of strings.
+// Vertical mirror: vert_mirror (or vertMirror or vert-mirror)
+// vert_mirror(s) => "dcba\nhgfe\nlkji\nponm"
+// Horizontal mirror: hor_mirror (or horMirror or hor-mirror)
+// hor_mirror(s) => "mnop\nijkl\nefgh\nabcd"
+// or printed:
+// vertical mirror   |horizontal mirror   
+// abcd --> dcba     |abcd --> mnop 
+// efgh     hgfe     |efgh     ijkl 
+// ijkl     lkji     |ijkl     efgh 
+// mnop     ponm     |mnop     abcd 
+// #Task:
+
+// Write these two functions
+// high-order function oper(fct, s) where
+// fct is the function of one variable f to apply to the string s (fct will be one of vertMirror, horMirror)
+// #Examples:
+// s = "abcd\nefgh\nijkl\nmnop"
+// oper(vert_mirror, s) => "dcba\nhgfe\nlkji\nponm"
+// oper(hor_mirror, s) => "mnop\nijkl\nefgh\nabcd"
+
+
+function vertMirror(strng) {
+	let arr = strng.split('\n');
+	return arr.map(elem => elem.split('').reverse().join('')).join('\n');
+}
+
+function horMirror(strng) {
+	let arr = strng.split('\n');
+	let newArr = [];
+	arr.map(elem => newArr.unshift(elem));
+	return newArr.join('\n');
+}
+
+function oper(fct, s) {
+	return fct(s);
+}
+
+// console.log(vertMirror("hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"));
+// console.log(horMirror('lVHt\nJVhv\nCSbg\nyeCt'));
+
+console.log(oper(vertMirror, "hSgdHQ\nHnDMao\nClNNxX\niRvxxH\nbqTVvA\nwvSyRu"));
+
+
+//TASk 2
+// Form The Minimum
+
+// Given a list of digits, return the smallest number that could be formed from these digits, using the digits only once (ignore duplicates).
+// Notes:
+// Only positive integers will be passed to the function (> 0 ), no negatives or zeros.
+// Input >> Output Examples
+// minValue ({1, 3, 1})  ==> return (13)
+// Explanation:
+// (13) is the minimum number could be formed from {1, 3, 1} , Without duplications
+// minValue({5, 7, 5, 9, 7})  ==> return (579)
+// Explanation:
+// (579) is the minimum number could be formed from {5, 7, 5, 9, 7} , Without duplications
+// minValue({1, 9, 3, 1, 7, 4, 6, 6, 7}) return  ==> (134679)
+
+function minValue(values){
+	let set = new Set(values);
+	let val = [];
+	for(let value of set){
+		val.push(value)
+	}
+	return Number(val.sort((a,b) => a - b).join(''));
+	//your code here
+}
+
+console.log(minValue([5, 7, 9, 5, 7]));
