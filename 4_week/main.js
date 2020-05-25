@@ -274,3 +274,28 @@ function minValue(values){
 }
 
 console.log(minValue([5, 7, 9, 5, 7]));
+
+//---------------- Day ....
+
+//TAsk 1 
+//Even or Odd
+// Create a function (or write a script in Shell) that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+function even_or_odd(number) {
+	return number%2 === 0 ? 'Even' : "Odd"
+}
+
+console.log(even_or_odd(0));
+
+//TASK2
+//Sum of positive
+
+// You get an array of numbers, return the sum of all of the positives ones.
+// Example [1,-4,7,12] => 1 + 7 + 12 = 20
+// Note: if there is nothing to sum, the sum is default to 0.
+
+function positiveSum(arr) {
+	let sort = arr.filter(num => num > 0)
+	return arr.length === 0 || sort.length === 0 ? 0 : sort.reduce((acc, num) => acc + num);
+}
+
+console.log(positiveSum([1,-2,3,4,5]));
