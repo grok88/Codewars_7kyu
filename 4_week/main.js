@@ -331,3 +331,38 @@ console.log(maxRot(56789));
 
 
 // 67895 65987       |8957   5
+
+
+// --DAY =---------------------
+// Opposite number
+// Very simple, given a number, find its opposite.
+// Examples:
+// 1: -1
+// 14: -14
+// -34: 34
+
+function opposite(number) {
+	//your code here
+	return -1 * number;
+
+}
+
+console.log(opposite(1));
+
+//task 2
+
+// Remove First and Last Character
+
+// It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a strin
+// g. You're given one parameter, the original string. You don't have to worry with strings with less than two characters.
+
+// function removeChar(str){
+// 	let test = str.split('')
+// 	test.splice(0,1);
+// 	test.splice(test.length -1 ,);
+	
+//    return test.join('');
+// };
+
+const removeChar = str => str.slice(1,-1)
+console.log(removeChar('eloquent'));
