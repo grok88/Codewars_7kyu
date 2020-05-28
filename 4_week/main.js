@@ -366,3 +366,44 @@ console.log(opposite(1));
 
 const removeChar = str => str.slice(1,-1)
 console.log(removeChar('eloquent'));
+
+// ---- DAY BY DAY
+
+
+// Factorial
+// In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n. For example: 5! = 5 * 4 * 3 * 2 * 1 = 120. By convention the value of 0! is 1.
+// Write a function to calculate factorial for a given input. If input is below 0 or above 12 throw an exception of type ArgumentOutOfRangeException (C#) or IllegalArgumentException (Java) or RangeException (PHP) or throw a RangeError (JavaScript) or ValueError (Python) or return -1 (C).
+
+function factorial(n){
+	let arr =[];
+	if (n === 0) {
+		return 1;
+	}else if ( n <= 0|| n > 12) {
+		throw new Error('Низзя');
+	} else {
+		for (let i = 1; i <=n ; i++){
+			arr.push(i);
+		};
+		return arr.reduce((acc, elem)=> acc*elem);
+	}
+}
+
+console.log(factorial(3));
+
+//TAsk2
+
+// Simple Fun #176: Reverse Letter
+// Given a string str, reverse it omitting all non-alphabetic characters.
+// Example
+// For str = "krishan", the output should be "nahsirk".
+// For str = "ultr53o?n", the output should be "nortlu".
+
+function reverseLetter(str) {	
+
+	// console.log(str.replace(/[^a-z]/gi,''));
+	console.log(str.match(/[a-z]/g));
+	
+	return str.split('').filter((elem) => /[a-z]/.test(elem)).reverse().join('');
+}
+
+console.log(reverseLetter("ultr53o?n"));
