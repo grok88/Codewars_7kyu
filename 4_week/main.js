@@ -407,3 +407,55 @@ function reverseLetter(str) {
 }
 
 console.log(reverseLetter("ultr53o?n"));
+
+
+
+
+// ---DAY BY DAY----------------
+
+//Task 1
+//Summing a number's digits
+// Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits. For example:
+//   sumDigits(10);  // Returns 1
+//   sumDigits(99);  // Returns 18
+//   sumDigits(-32); // Returns 5
+
+function sumDigits(number) {
+
+	return String(Math.abs(number)).split('').reduce((acc, num) => {
+		console.log(num);
+		return acc + +num;
+	}, 0);
+}
+
+console.log(sumDigits(-32));
+
+//Task2
+// Maximum Multiple
+// Given a Divisor and a Bound , Find the largest integer N , Such That ,
+// Conditions :
+// N is divisible by divisor
+// N is less than or equal to bound
+// N is greater than 0.
+// Notes
+// The parameters (divisor, bound) passed to the function are only positve values .
+// It's guaranteed that a divisor is Found .
+// maxMultiple (2,7) ==> return (6)
+// Explanation:
+// (6) is divisible by (2) , (6) is less than or equal to bound (7) , and (6) is > 0 .
+
+
+//My
+function maxMultiple(divisor, bound){
+	let arr =[]
+	for (let i =0; i <= bound;i++){
+		if(i%divisor === 0){
+			arr.push(i);
+		}
+	}
+	return Math.max(...arr);
+}
+//The best 
+//return bound-bound%divisor
+
+console.log(maxMultiple(10,50));
