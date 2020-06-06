@@ -92,4 +92,59 @@ function partlist(arr) {
 	return editArr;
 }
 
+
 console.log(partlist(["I", "wish", "I", "hadn't", "come"]));
+
+
+
+////--Day 3
+
+// Sorted? yes? no? how?
+
+// Complete the method which accepts an array of integers, and returns one of the following:
+// "yes, ascending" - if the numbers in the array are sorted in an ascending order
+// "yes, descending" - if the numbers in the array are sorted in a descending order
+// "no" - otherwise
+// You can assume the array will always be valid, and there will always be one correct answer.
+
+function isSortedAndHow(array) {
+	const sortAscending = [...array].sort((a,b) => a - b );
+	const sortDescending = [...array].sort((a,b) => b - a );
+
+	if (sortAscending.every((elem,i) => elem === array[i])){
+		return "yes, ascending";
+	} else if (sortDescending.every((elem,i) => elem === array[i])){
+		return "yes, descending";
+	} else {
+		return "no" ;
+	}
+}
+
+console.log(isSortedAndHow([ 2, 0, -1]));
+
+//TASK2
+
+//Round to the next multiple of 5.
+
+// Given an integer as input, can you round it to the next (meaning, "higher") 5?
+// Examples:
+// input:    output:
+// 0    ->   0
+// 2    ->   5
+// 3    ->   5
+// 12   ->   15
+// 21   ->   25
+// 30   ->   30
+// -2   ->   0
+// -5   ->   -5
+// etc.
+
+function roundToNext5(n){
+	while(n % 5 !== 0){
+			n++;
+	}
+	return n;
+}
+
+console.log(roundToNext5(-3));
+
