@@ -185,14 +185,21 @@ console.log(capitals('CodEWaRs'));
 
 
 var palindromeChainLength = function(n) {
-	const temp = String(n);
-	let reverse = temp.split('').reverse().join('');
-	console.log(temp);
+	let temp = n; 
+	let reverse = +String(temp).split('').reverse().join('')
+	let count = 0;
+
 	if ( reverse === String(n) ){
 		return 0;
 	}
 
-	return n;
+	while(reverse !== temp ){
+		temp += reverse;
+		console.log(temp);
+		reverse =  +String(temp).split('').reverse().join('')
+		count++;
+	}
+	return count;
 };
 
 console.log(palindromeChainLength(87));
