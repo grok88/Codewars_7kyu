@@ -85,3 +85,31 @@ var SequenceSum = (function() {
 	return SequenceSum;
 })();
 console.log(SequenceSum.showSequence(6));
+
+//-----------DAY 3-----------
+
+// Alternate capitalization
+// Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+// For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+// The input will be a lowercase string with no spaces.
+
+
+function capitalize(s){
+	let odd = [ ...s].map((elem,i) => {
+		if(i%2 === 0){
+			return elem.toUpperCase();
+		}
+		else return elem;
+	}).join('');
+
+	let even = [ ...s].map((elem,i) => {
+		if(i%2 !== 0){
+			return elem.toUpperCase();
+		}
+		else return elem
+	}).join('');
+	
+	return [odd, even];
+};
+
+console.log(capitalize("abcdef"));
