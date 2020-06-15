@@ -117,13 +117,58 @@ console.log(capitalize("abcdef"));
 
 class SmallestIntegerFinder {
 	findSmallestInt(args) {
-	  return Math.min(... args);
+		return Math.min(... args);
 	}
 }
 
-// Find the smallest integer in the array
-// Given an array of integers your solution should find the smallest integer.
-// For example:
-// Given [34, 15, 88, 2] your solution will return 2
-// Given [34, -345, -1, 100] your solution will return -345
+
+
+
+
+// ..------------------------------
+//Anagram Detection
+
+// An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia).
+// Note: anagrams are case insensitive
+// Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
+// Examples
+// "foefet" is an anagram of "toffee"
+// "Buckethead" is an anagram of "DeathCubeK"
+
+// write the function isAnagram
+
+
+//ULTRA STUPID
+var isAnagram = function(test, original) {
+	let word1 = test.toLowerCase().split('');
+	let word2 = original.toLowerCase().split('');
+	if(word1.length !==word2.length ) return false;
+
+	for(let i = 0; i< word1.length; i++){
+		let index = word2.indexOf(word1[i]);
+		
+		if(index === -1) {
+			return false
+		}
+			word2.splice(index,1);
+		}
+
+	if(word2.length === 0) return true;
+};
+
+// true solution
+
+// write the function isAnagram
+// var isAnagram = function(test, original) {
+// 	var t = test.toLowerCase().split('').sort().join('');
+// 	var o = original.toLowerCase().split('').sort().join('');
+// 	return (t==o)?true:false;
+//   };
+
+console.log(isAnagram("foefet", "toffee"));
+
+
+
+
+
 
