@@ -481,3 +481,30 @@ function inAscOrder(arr) {
 }
 
 console.log(inAscOrder([19,1, 2, 4, 7]));
+
+
+
+//----------------DAY BY DAY _---------------
+
+// Triangular Treasure
+// Triangular numbers are so called because of the equilateral triangular shape that they occupy when laid out as dots. i.e.
+// 1st (1)   2nd (3)    3rd (6)
+// *          **        ***
+//            *         **
+//                      *
+// You need to return the nth triangular number. You should return 0 for out of range values:
+//   triangular(0)==0,
+//   triangular(2)==3,
+//   triangular(3)==6,
+//   triangular(-10)==0
+
+// Return the nth triangular number
+function triangular( n ) {
+	let sum = 0;
+	for(let i =0; i <=n; i++){
+		sum += i;
+	}
+	
+	return n < 0 ? 0 : sum
+}
+console.log(triangular(2));
