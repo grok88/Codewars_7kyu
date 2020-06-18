@@ -508,3 +508,39 @@ function triangular( n ) {
 	return n < 0 ? 0 : sum
 }
 console.log(triangular(2));
+
+//----------------DAY BY DAY _---------------
+// //Two Oldest Ages
+// The two oldest ages function/method needs to be completed. It should take an array of numbers as its argument and return the two highest numbers within the array. The returned value should be an array in the format [second oldest age, oldest age].
+// The order of the numbers passed in could be any order. The array will always include at least 2 items.
+// For example:
+// twoOldestAges( [1, 2, 10, 8] ) // should return [8, 10]
+
+// return the two oldest/oldest ages within the array of ages passed in.
+function twoOldestAges(ages){
+	let firstMax = Math.max(...ages);
+	ages.splice(ages.indexOf(firstMax),1);
+	let secondMax = Math.max(...ages);
+	return [secondMax, firstMax];
+}
+
+console.log(twoOldestAges( [1, 2, 10, 8] ));
+
+
+//Flatten and sort an array
+// Challenge:
+// Given a two-dimensional array of integers, return the flattened version of the array with all the integers in the sorted (ascending) order.
+// Example:
+// Given [[3, 2, 1], [4, 6, 5], [], [9, 7, 8]], your function should return [1, 2, 3, 4, 5, 6, 7, 8, 9].
+
+
+function flattenAndSort(array) {
+	// Good luck, brave code warrior!
+	const arr = array.reduce((acc,arr) => {
+		return [ ...acc, ...arr];
+	}, []);
+	console.log(arr);
+	return arr.sort((a,b) => a - b );
+}
+
+console.log(flattenAndSort([[1, 3, 5], [100], [2, 4, 6]]));
