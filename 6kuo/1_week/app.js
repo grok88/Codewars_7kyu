@@ -7,21 +7,21 @@
 // Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
 // Note: If the number is a multiple of both 3 and 5, only count it once.
 
-function solution(number){
-	if(number <=0) return 0 ;
-	let arr =[];
-	for(let i = 0; i < number; i++){
-		if(i%3 === 0 || i%5 ===0){
-				arr.push(i);
+// function solution(number){
+// 	if(number <=0) return 0 ;
+// 	let arr =[];
+// 	for(let i = 0; i < number; i++){
+// 		if(i%3 === 0 || i%5 ===0){
+// 				arr.push(i);
 		
-		}
-	}
-	return arr.reduce((acc,num) => {
-		return acc+num;
-	})
-}
+// 		}
+// 	}
+// 	return arr.reduce((acc,num) => {
+// 		return acc+num;
+// 	})
+// }
 
-console.log(solution(10));
+// console.log(solution(10));
 
 
 //-----------------------DAY 2-------------------------
@@ -35,15 +35,15 @@ console.log(solution(10));
 // 132189  -->  1 + 3 + 2 + 1 + 8 + 9 = 24  -->  2 + 4 = 6
 // 493193  -->  4 + 9 + 3 + 1 + 9 + 3 = 29  -->  2 + 9 = 11  -->  1 + 1 = 2
 
-function digital_root(n) {
-	let arrTemp = String(n);
-	while(arrTemp.length !== 1){
-		arrTemp = arrTemp.split('');
-		arrTemp = String(arrTemp.reduce((acc,num) => acc+ Number(num),0));
-	}
-	return +arrTemp;
-}
-console.log(digital_root(132189));
+// function digital_root(n) {
+// 	let arrTemp = String(n);
+// 	while(arrTemp.length !== 1){
+// 		arrTemp = arrTemp.split('');
+// 		arrTemp = String(arrTemp.reduce((acc,num) => acc+ Number(num),0));
+// 	}
+// 	return +arrTemp;
+// }
+// console.log(digital_root(132189));
 
 
 //Persistent Bugger.
@@ -56,23 +56,23 @@ console.log(digital_root(132189));
 //                         // 1*2*6 = 12, and finally 1*2 = 2
 //  persistence(4) === 0 // because 4 is already a one-digit number
 
-function persistence(num) {
-	let count = 0;
-	if(String(num).length === 1 ){
-		return 0
-	}
-	let arr = String(num).split('');
+// function persistence(num) {
+// 	let count = 0;
+// 	if(String(num).length === 1 ){
+// 		return 0
+// 	}
+// 	let arr = String(num).split('');
 	
-	while(arr.length !==1){
-		count++;
-		let res = arr.reduce((acc, num) => {
-			return acc * num
-		});
-		arr = String(res).split('');
-	}
-	return count;
-}
-console.log(persistence(25));
+// 	while(arr.length !==1){
+// 		count++;
+// 		let res = arr.reduce((acc, num) => {
+// 			return acc * num
+// 		});
+// 		arr = String(res).split('');
+// 	}
+// 	return count;
+// }
+// console.log(persistence(25));
 
 
 // Find The Parity Outlier
@@ -84,13 +84,62 @@ console.log(persistence(25));
 // Should return: 160 (the only even number)
 
 
-function findOutlier(integers){
-	let status = integers.filter(num => num%2 ===0);
-	if (status.length === 1) {
-		return status[0]
-	} else {
-		return integers.filter(num => num%2 !==0)[0]
-	}
+// function findOutlier(integers){
+// 	let status = integers.filter(num => num%2 ===0);
+// 	if (status.length === 1) {
+// 		return status[0]
+// 	} else {
+// 		return integers.filter(num => num%2 !==0)[0]
+// 	}
+// }
+
+// console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]));
+
+
+//----------------PROMISE--------------
+// const func = (param) => {
+// 	return Promise.resolve(param);
+// }
+
+// console.log(11111111111);
+//  const test = async () => {
+// 	console.log('start');
+// 	let res1 = await func('one');
+// 	console.log(res1);
+// 	let res2 = await func('two');
+// 	console.log(res2);
+// 	console.log('end');
+// 	return [res1, res2];
+// }
+// console.log(2222222222222222);
+// test().then(console.log);
+// console.log(333333333333333333);
+
+
+//1
+//Count the number of Duplicates
+
+// Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+// Example
+// "abcde" -> 0 # no characters repeats more than once
+// "aabbcde" -> 2 # 'a' and 'b'
+// "aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
+// "indivisibility" -> 1 # 'i' occurs six times
+// "Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
+// "aA11" -> 2 # 'a' and '1'
+// "ABBA" -> 2 # 'A' and 'B' each occur twice
+
+function duplicateCount(text){
+	console.log(text);
+	let arr = text.toLowerCase().split('');
+	let countArr =[];
+	arr.forEach((l,i)=> {
+		if(text.toLowerCase().indexOf(l) !== i){
+			countArr.push(l);
+		}
+	});
+	return [ ...new Set(countArr)].length;
 }
 
-console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]));
+
+console.log(duplicateCount("Indivisibility"));
