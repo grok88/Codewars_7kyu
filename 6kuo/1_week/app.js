@@ -173,3 +173,57 @@ function likes(names) {
 }
 
 console.log(likes(['Jacob', 'Alex']));
+
+// task 3
+
+//Duplicate Encoder
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))((" 
+
+
+
+//---------------------------- НУ И ТУПОЙ ЖЕ Я -------------------
+
+// function duplicateEncode(word){
+
+// 	let arr = word.toLowerCase().split('');
+	
+// 	let str = word.toLowerCase();
+// 	if(str.indexOf(')') !== -1){
+// 		str = str.replace(/[\)]/g, "-");
+// 	}
+
+// 	let temp = arr.map((letter, i) => {
+// 		if(word.toLowerCase().indexOf(letter) !== i){
+		
+// 			console.log(letter);
+// 			str= str.replace(new RegExp( '[' +  letter + ']', "g" ), ")")
+// 			// console.log(str);
+// 			return ')';
+// 		}
+// 		// str= str.replace(new RegExp( letter, "g" ), "(")
+		
+// 		// console.log(str);
+// 		return '('
+// 	});
+// 	str = str.replace(/[^\)]/g, "(");
+// 	console.log(str);
+// 	return str;
+// }
+
+//------------------- РЕШЕНИЕ ПРОВОСЛАВНОГО ЧЕЛОВЕКА -----------
+function duplicateEncode(word){
+	return  word
+	.toLowerCase()
+	.split('')
+	.map((letter,i, arr) => {
+		return arr.indexOf(letter) === arr.lastIndexOf(letter) ? "(" : ")"
+	})
+	.join('');
+}
+console.log(duplicateEncode("))))u))O)cly)a)"));
