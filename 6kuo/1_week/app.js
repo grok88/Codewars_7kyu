@@ -294,10 +294,52 @@ function order(words){
 
 // the BEST
 // function order(words){
-  
+
 // 	return words.split(' ').sort(function(a, b){
 // 		return a.match(/\d/) - b.match(/\d/);
 // 	 }).join(' ');
 //   }   
- 
+
 console.log(order("is2 Thi1s T4est 3a"));
+
+// next kata
+// Sort the odd
+
+// You have an array of numbers.
+// Your task is to sort ascending odd numbers but even numbers must be on their places.
+// Zero isn't an odd number and you don't need to move it. If you have an empty array, you need to return it.
+// sortArray([5, 3, 2, 8, 1, 4]) == [1, 3, 2, 8, 5, 4]
+
+function sortArray(array) {
+	if(array.length === 0){
+		return [];
+	};
+
+	let oddTemp = [];
+	let evenTemp = [];
+	let res = [];
+
+	array.forEach(num => {
+		if(num %2 ===0){
+			evenTemp.push(num);
+		} else {
+			oddTemp.push(num);
+		}
+	});
+	oddTemp = oddTemp.sort((a, b) => a -b );
+	array.map(num => {
+		if(num %2 ===0){
+			res.push(evenTemp.shift());
+		} else {
+			res.push(oddTemp.shift());
+		}
+	});
+
+	console.log(oddTemp);
+	console.log(evenTemp);
+	console.log(res);
+
+	return res;
+}
+
+console.log(sortArray([1, 3, 2, 8, 5, 4, 11]));
