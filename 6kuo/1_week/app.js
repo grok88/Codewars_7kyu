@@ -270,7 +270,6 @@ function order(words){
 	let temp = [];
 	let res = [];
 	arr.map(elem => {
-		console.log(elem.split(''));
 		return elem.split('').forEach(l => {
 			if(parseInt(l)){
 				temp.push(l)
@@ -281,13 +280,10 @@ function order(words){
 	temp.forEach(item => {
 		arr.forEach(w => {
 			if(w.indexOf(item) !== -1){
-				console.log(w);
 				res.push(w)
 			}
 		})
 	})
-	console.log(res);
-	console.log(temp);
 	return res.join(' ');
 	// ...
 }
@@ -335,10 +331,6 @@ function sortArray(array) {
 		}
 	});
 
-	console.log(oddTemp);
-	console.log(evenTemp);
-	console.log(res);
-
 	return res;
 }
 
@@ -379,3 +371,35 @@ function songDecoder(song){
 // }
 
 console.log(songDecoder('WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB'));
+
+//-------------------------------------------- next kata --------------------------------
+
+// Create Phone Number
+
+// Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
+// Example:
+// createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
+// The returned format must be correct in order to complete this challenge.
+// Don't forget the space after the closing parentheses!
+
+//My
+function createPhoneNumber(numbers){
+	let arr = numbers.map(num => String(num));
+	arr.splice(0,0, '(');
+	arr.splice(4,0, ')');
+	arr.splice(5,0, ' ');
+	arr.splice(9,0, '-');
+	return arr.join('');
+}
+
+//The best
+// function createPhoneNumber(numbers){
+// 	var format = "(xxx) xxx-xxxx";
+	
+// 	for(var i = 0; i < numbers.length; i++){
+// 		format = format.replace('x', numbers[i]);
+// 	}
+// 	return format;
+// }
+
+console.log(createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]));
