@@ -469,3 +469,19 @@ function tickets(peopleInLine){
 }
 
 console.log(tickets([ 25, 50, 25, 50, 100, 25, 25, 50 ]));
+
+//--------------------NEXT kata ----------------------
+
+//Consecutive strings
+// You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.
+// Example:
+// longest_consec(["zone", "abigail", "theta", "form", "libe", "zas", "theta", "abigail"], 2) --> "abigailtheta"
+// n being the length of the string array, if n = 0 or k > n or k <= 0 return "".
+
+function longestConsec(strarr, k) {
+	if(strarr.length === 0 || k > strarr.length | k <=0) return '';
+	let test = strarr.map((elem, i) => strarr.slice(i, i + k)).filter(arr => arr.length === k);
+	let length = test.map(elem => elem.join('').length);
+	return test[length.indexOf(Math.max(...length))].join('') ;
+}
+console.log(longestConsec(["wlwsasphmxx","owiaxujylentrklctozmymu","wpgozvxxiu"],2))
