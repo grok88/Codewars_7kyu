@@ -23,3 +23,37 @@ function solve(s){
 	return count >=0 ? s.toLowerCase() : s.toUpperCase()
 }
 console.log(solve("CODe"));
+
+
+
+//---------------------day 1 -----------------
+
+//Convert string to camel case
+// Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized (known as Upper Camel Case, also often referred to as Pascal case)
+// Examples
+// toCamelCase("the-stealth-warrior") // returns "theStealthWarrior"
+
+// toCamelCase("The_Stealth_Warrior") // returns "TheStealthWarrior"
+
+function toCamelCase(str){
+	//The best
+	let test = str.replace(/[_-]\w/g, (str) => {
+		console.log(str);
+		return str[1].toUpperCase();
+	})
+	console.log(test);
+	// My bad
+	str = str.replace(/[_-]/g,'*').split('*')
+	console.log(str);
+	let res = str.map((elem, i )=> {
+		if(i === 0){
+			return elem;
+		} else {
+			return elem.slice(0,1).toUpperCase() + elem.slice(1);
+		}
+		
+	}).join('')
+	return res;
+}
+
+console.log(toCamelCase("the-stealth_warrior"));
