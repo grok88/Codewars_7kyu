@@ -57,3 +57,37 @@ function toCamelCase(str){
 }
 
 console.log(toCamelCase("the-stealth_warrior"));
+
+
+//--------------DAY2 ---------------------
+
+//Find the missing letter
+
+// Write a method that takes an array of consecutive (increasing) letters as input and that returns the missing letter in the array.
+// You will always get an valid array. And it will be always exactly one letter be missing. The length of the array will always be at least 2.
+// The array will always contain letters in only one case.
+// Example:
+
+// ['a','b','c','d','f'] -> 'e' ['O','Q','R','S'] -> 'P'
+
+// ["a","b","c","d","f"] -> "e"
+// ["O","Q","R","S"] -> "P"
+
+
+function findMissingLetter(array){
+	let temp =[];
+	let res ;
+	array.forEach(el => {
+		temp.push(el.charCodeAt());
+	})
+	temp.forEach((el, i, arr) => {
+		if(((el + 1) !== arr[i+1]) && el !=arr[arr.length-1] ){
+			res = el+1;
+		}
+	})
+	return String.fromCharCode(res);
+}
+
+// console.log('a'.charCodeAt());
+
+console.log(findMissingLetter(['a','b','c','d','f']));
