@@ -169,3 +169,27 @@ function reverseNumber(n) {
 console.log(reverseNumber(-123));
 
 
+// ..---DAY 6--------------------------
+
+// Find the unique number
+
+// There is an array with some numbers. All numbers are equal except for one. Try to find it!
+// findUniq([ 1, 1, 1, 2, 1, 1 ]) === 2
+// findUniq([ 0, 0, 0.55, 0, 0 ]) === 0.55
+
+function findUniq(arr) {
+	temp1=[];
+	temp2=[];
+	arr.forEach((el,i,arr) => {
+		if(el === arr[0]){
+			temp1.push(el);
+		}else {
+			temp2.push(el);
+		}
+	})
+	return temp1.length > temp2.length ? temp2[0] : temp1[0];
+}
+
+console.log(findUniq([ 1, 1, 1, 2, 1, 1 ]));
+
+
